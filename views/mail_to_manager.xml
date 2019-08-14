@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="odoo_email_template_warning" model="mail.template">
+            <field name="name">Manager birthday</field>
+            <field name="email_from">${object.company_id and object.company_id.email or ''}</field>
+            <field name="subject">Sắp đến sinh nhật của trưởng phòng</field>
+            <field name="email_to">${object.email|safe}</field>
+            <field name="lang">${object.lang}</field>
+            <field name="model_id" ref="base.model_res_partner"/>
+            <field name="auto_delete" eval="False"/>
+            <field name="body_html">
+                <![CDATA[
+	            <p>Sắp đến sinh nhật trưởng phòng của bạn rồi<br/><br/>
+	            Bạn hãy chuẩn bị để tạo cho Anh/chị ấy một sinh nhật vui vẻ nhé<br/>
+	            </p>Cảm ơn bạn<br/>
+                    ${(object.company_id.name)}
+	            ]]>
+            </field>
+        </record>
+    </data>
+</odoo>

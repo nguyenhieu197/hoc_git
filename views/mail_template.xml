@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data >
+        <record id="odoo_email_template_birthday" model="mail.template">
+            <field name="name">Mail happy birthday</field>
+            <field name="email_from">${object.company_id and object.company_id.email or ''}</field>
+            <field name="subject">Chúc mừng ${object.name}</field>
+            <field name="email_to">${object.email|safe}</field>
+            <field name="lang">${object.lang}</field>
+            <field name="model_id" ref="base.model_res_partner"/>
+            <field name="auto_delete" eval="False"/>
+            <field name="body_html">
+                <![CDATA[
+	            <p>Chúc mừng sinh nhật bạn ${(object.name)},<br/><br/>
+	            Cảm ơn bạn vì trong thời gian qua đã đóng góp cho công ty thời gian vừa qua!<br/></p>
+                Chúc bạn sinh nhật vui vẻ<br/>
+                    ${(object.company_id.name)}
+	            ]]>
+            </field>
+        </record>
+    </data>
+</odoo>
